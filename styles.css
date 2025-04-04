@@ -1,0 +1,304 @@
+:root {
+    --dark-purple: #2d0a31;
+    --purple: #4a1259;
+    --light-purple: #9b4dca;
+    --pink: #f0a6ca;
+    --dark-red: #8b0000;
+    --bone: #f8f0e3;
+  }
+  
+  body {
+    background-color: var(--dark-purple);
+    color: var(--bone);
+    font-family: "Courier New", monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+  }
+  
+  header {
+    background-color: var(--purple);
+    color: var(--bone);
+    padding: 10px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--light-purple);
+  }
+  
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-weight: normal;
+    letter-spacing: 2px;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    background-color: var(--purple);
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--light-purple);
+  }
+  
+  .clicker-area {
+    background-color: var(--purple);
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid var(--light-purple);
+  }
+  
+  .clicker-button {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+    margin: 20px auto;
+    display: block;
+    background-image: url("path/to/your/clicker-image.png"); /* Замените путь */
+    background-size: cover;
+  }
+  
+  .clicker-button:active {
+    transform: scale(0.95);
+  }
+  
+  #click-icon {
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/click.png"); /* Замените путь */
+    background-size: cover;
+    background-color: transparent;
+  }
+  
+  .resource-display {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--purple);
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--light-purple);
+  }
+  
+  .tab-container {
+    background-color: var(--purple);
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--light-purple);
+  }
+  
+  .tabs {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  .tab {
+    background-color: var(--dark-purple);
+    color: var(--bone);
+    border: 1px solid var(--light-purple);
+    padding: 10px 15px;
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .tab.active {
+    background-color: var(--light-purple);
+    color: var(--dark-purple);
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  .upgrade,
+  .generator,
+  .prestige-option {
+    background-color: var(--dark-purple);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid var(--light-purple);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .upgrade:hover,
+  .generator:hover,
+  .prestige-option:hover {
+    background-color: rgba(155, 77, 202, 0.2);
+  }
+  
+  .upgrade-icon,
+  .generator-icon {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-color: transparent;
+    margin-right: 10px;
+  }
+  
+  /* Примеры кастомных иконок */
+  .candle-icon {
+    background-image: url("assets/candle.png");
+  }
+  
+  .altar-icon {
+    background-image: url("assets/altar.png");
+  }
+  
+  .grimoire-icon {
+    background-image: url("assets/grimoire.png");
+  }
+  
+  .crypt-icon {
+    background-image: url("assets/crypt.png");
+  }
+  
+  .necromancer-icon {
+    background-image: url("assets/necromancer.png");
+  }
+  
+  .cathedral-icon {
+    background-image: url("assets/cathedral.png");
+  }
+  
+  .abyss-portal-icon {
+    background-image: url("assets/abyss_portal.png");
+  }
+  
+  .soulforge-icon {
+    background-image: url("assets/soulforge.png");
+  }
+  
+  button {
+    background-color: var(--light-purple);
+    color: var(--dark-purple);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: "Courier New", monospace;
+    border-radius: 3px;
+  }
+  
+  button:hover {
+    background-color: var(--pink);
+  }
+  
+  button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+  }
+  
+  .locked {
+    filter: brightness(50%);
+    pointer-events: none;
+  }
+  
+  .upgrade-info,
+  .generator-info {
+    flex-grow: 1;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  .prestige-ready {
+    background-color: var(--dark-red);
+    color: var(--bone);
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    animation: pulse 2s infinite;
+  }
+  
+  #prestige-souls-container {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  #notification-area {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+  }
+  
+  .notification {
+    background-color: var(--purple);
+    color: var(--bone);
+    border: 2px solid var(--light-purple);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideIn 0.5s forwards;
+  }
+  
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .notification.fadeOut {
+    animation: fadeOut 0.5s forwards;
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  }
+  
+  textarea {
+    background-color: var(--dark-purple);
+    color: var(--bone);
+    border: 1px solid var(--light-purple);
+    padding: 5px;
+    font-family: "Courier New", monospace;
+    width: 100%;
+    resize: none;
+  }
+  
+  textarea:focus {
+    outline: none;
+    border-color: var(--pink);
+  }

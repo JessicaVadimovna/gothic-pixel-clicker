@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Готический Кликер</title>
+  </head>
+  <body>
+    <header>
+      <h1>Готический Кликер</h1>
+    </header>
+
+    <div class="container">
+      <div class="main-content">
+        <div class="clicker-area">
+          <div class="resource-display">
+            <span id="essence-count">0</span> эссенции
+          </div>
+          <div class="resource-display">
+            <span id="essence-per-second">0.0</span> эссенции в секунду
+          </div>
+          <button class="clicker-button" id="clicker">
+            <div id="click-icon"></div>
+          </button>
+          <div id="prestige-souls-container" style="display: none">
+            <div>Потусторонние души: <span id="souls-count">0</span></div>
+          </div>
+          <div id="mastery-info" style="margin-top: 10px">
+            <div>Уровень мастерства: <span id="mastery-level">0</span></div>
+            <div>Очки мастерства: <span id="mastery-points">0</span></div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div>Всего щелчков: <span id="total-clicks">0</span></div>
+          </div>
+          <div class="stat">
+            <div>Всего эссенции: <span id="total-essence">0</span></div>
+          </div>
+          <div class="stat">
+            <div>Престижей: <span id="total-prestiges">0</span></div>
+          </div>
+        </div>
+
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab active" data-tab="generators">Генераторы</div>
+            <div class="tab" data-tab="upgrades">Улучшения</div>
+            <div class="tab" data-tab="prestige">Престиж</div>
+            <div class="tab" data-tab="mastery">Мастерство</div>
+          </div>
+
+          <div class="tab-content active" id="generators-tab">
+            <div id="generators-container">
+              <!-- Генератор: Свеча -->
+              <div class="generator" data-id="candle">
+                <div class="generator-icon candle-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Свеча</strong> (<span
+                      class="generator-count"
+                      data-id="candle"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Мерцающая свеча призывает духов</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="candle">0</span>
+                    эссенции/сек
+                  </div>
+                </div>
+                <button class="buy-generator" data-id="candle" data-amount="1">
+                  +1 (<span class="generator-cost" data-id="candle">10</span>)
+                </button>
+                <button
+                  class="buy-generator"
+                  data-id="candle"
+                  data-amount="max"
+                >
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Алтарь -->
+              <div class="generator" data-id="altar" style="display: none">
+                <div class="generator-icon altar-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Алтарь</strong> (<span
+                      class="generator-count"
+                      data-id="altar"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Небольшой алтарь для ритуалов</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="altar">0</span>
+                    эссенции/сек
+                  </div>
+                </div>
+                <button class="buy-generator" data-id="altar" data-amount="1">
+                  +1 (<span class="generator-cost" data-id="altar">100</span>)
+                </button>
+                <button class="buy-generator" data-id="altar" data-amount="max">
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Гримуар -->
+              <div class="generator" data-id="grimoire" style="display: none">
+                <div class="generator-icon grimoire-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Гримуар</strong> (<span
+                      class="generator-count"
+                      data-id="grimoire"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Древняя книга с заклинаниями</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="grimoire"
+                      >0</span
+                    >
+                    эссенции/сек
+                  </div>
+                </div>
+                <button
+                  class="buy-generator"
+                  data-id="grimoire"
+                  data-amount="1"
+                >
+                  +1 (<span class="generator-cost" data-id="grimoire">1100</span
+                  >)
+                </button>
+                <button
+                  class="buy-generator"
+                  data-id="grimoire"
+                  data-amount="max"
+                >
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Склеп -->
+              <div class="generator" data-id="crypt" style="display: none">
+                <div class="generator-icon crypt-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Склеп</strong> (<span
+                      class="generator-count"
+                      data-id="crypt"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Место упокоения с мистической энергией</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="crypt">0</span>
+                    эссенции/сек
+                  </div>
+                </div>
+                <button class="buy-generator" data-id="crypt" data-amount="1">
+                  +1 (<span class="generator-cost" data-id="crypt">12000</span>)
+                </button>
+                <button class="buy-generator" data-id="crypt" data-amount="max">
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Некромант -->
+              <div
+                class="generator"
+                data-id="necromancer"
+                style="display: none"
+              >
+                <div class="generator-icon necromancer-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Некромант</strong> (<span
+                      class="generator-count"
+                      data-id="necromancer"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Мастер тёмных искусств</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="necromancer"
+                      >0</span
+                    >
+                    эссенции/сек
+                  </div>
+                </div>
+                <button
+                  class="buy-generator"
+                  data-id="necromancer"
+                  data-amount="1"
+                >
+                  +1 (<span class="generator-cost" data-id="necromancer"
+                    >130000</span
+                  >)
+                </button>
+                <button
+                  class="buy-generator"
+                  data-id="necromancer"
+                  data-amount="max"
+                >
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Тёмный собор -->
+              <div class="generator" data-id="cathedral" style="display: none">
+                <div class="generator-icon cathedral-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Тёмный собор</strong> (<span
+                      class="generator-count"
+                      data-id="cathedral"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Величественное здание с энергией</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="cathedral"
+                      >0</span
+                    >
+                    эссенции/сек
+                  </div>
+                </div>
+                <button
+                  class="buy-generator"
+                  data-id="cathedral"
+                  data-amount="1"
+                >
+                  +1 (<span class="generator-cost" data-id="cathedral"
+                    >1400000</span
+                  >)
+                </button>
+                <button
+                  class="buy-generator"
+                  data-id="cathedral"
+                  data-amount="max"
+                >
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Портал Бездны -->
+              <div
+                class="generator"
+                data-id="abyss_portal"
+                style="display: none"
+              >
+                <div class="generator-icon abyss-portal-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Портал Бездны</strong> (<span
+                      class="generator-count"
+                      data-id="abyss_portal"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Врата в иное измерение</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="abyss_portal"
+                      >0</span
+                    >
+                    эссенции/сек
+                  </div>
+                </div>
+                <button
+                  class="buy-generator"
+                  data-id="abyss_portal"
+                  data-amount="1"
+                >
+                  +1 (<span class="generator-cost" data-id="abyss_portal"
+                    >20000000</span
+                  >)
+                </button>
+                <button
+                  class="buy-generator"
+                  data-id="abyss_portal"
+                  data-amount="max"
+                >
+                  +Max
+                </button>
+              </div>
+
+              <!-- Генератор: Кузница Душ -->
+              <div class="generator" data-id="soulforge" style="display: none">
+                <div class="generator-icon soulforge-icon"></div>
+                <div class="generator-info">
+                  <div>
+                    <strong>Кузница Душ</strong> (<span
+                      class="generator-count"
+                      data-id="soulforge"
+                      >0</span
+                    >)
+                  </div>
+                  <div>Переплавляет души в эссенцию</div>
+                  <div>
+                    Производство:
+                    <span class="generator-production" data-id="soulforge"
+                      >0</span
+                    >
+                    эссенции/сек
+                  </div>
+                </div>
+                <button
+                  class="buy-generator"
+                  data-id="soulforge"
+                  data-amount="1"
+                >
+                  +1 (<span class="generator-cost" data-id="soulforge"
+                    >300000000</span
+                  >)
+                </button>
+                <button
+                  class="buy-generator"
+                  data-id="soulforge"
+                  data-amount="max"
+                >
+                  +Max
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="upgrades-tab">
+            <div id="upgrades-container"></div>
+          </div>
+
+          <div class="tab-content" id="prestige-tab">
+            <div id="prestige-info">
+              <p>
+                Совершите обряд перерождения, чтобы получить потусторонние души.
+                Вы потеряете всю эссенцию и генераторы, но получите бонусы.
+              </p>
+              <p>Текущая эссенция: <span id="current-essence">0</span></p>
+              <p>
+                Потусторонние души при перерождении:
+                <span id="souls-gain">0</span>
+              </p>
+              <p>Требуется минимум 1000 эссенции для перерождения.</p>
+              <button id="prestige-button" disabled>
+                Совершить обряд перерождения
+              </button>
+            </div>
+            <div
+              id="prestige-upgrades-container"
+              style="margin-top: 20px"
+            ></div>
+          </div>
+
+          <div class="tab-content" id="mastery-tab">
+            <div id="mastery-container" style="margin-top: 20px">
+              <h3>Мастерство</h3>
+              <p>Достигайте новых уровней мастерства каждые 5 престижей.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <h2>Журнал событий</h2>
+        <div
+          id="log-container"
+          style="height: 300px; overflow-y: auto; margin-top: 10px"
+        ></div>
+        <div style="margin-top: 20px">
+          <h3>Сохранение и загрузка</h3>
+          <textarea id="save-code" rows="3" readonly></textarea>
+          <button id="save-button" style="margin-top: 5px">Сохранить</button>
+          <button id="load-button" style="margin-top: 5px">Загрузить</button>
+          <button id="reset-button" style="margin-top: 5px">
+            Сбросить прогресс
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="notification-area"></div>
+    <div
+      id="event-indicator"
+      style="
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background: #333;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+      "
+    ></div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
